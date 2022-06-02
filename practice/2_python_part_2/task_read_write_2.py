@@ -22,3 +22,12 @@ def generate_words(n=20):
         words.append(word)
 
     return words
+
+
+result = generate_words()
+
+with open('file1.txt', 'w', encoding='UTF-8') as file1:
+    print(*result, sep='\n', file=file1)
+
+with open('file2.txt', 'w', encoding='CP1252') as file2:
+    print(*reversed(result), sep=',', file=file2)

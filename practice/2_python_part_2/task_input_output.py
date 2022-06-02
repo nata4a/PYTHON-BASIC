@@ -6,11 +6,11 @@ Return string with following format:
 If average exists, return: "Avg: X", where X is avg value which rounded to 2 places after the decimal
 If it doesn't exists, return: "No numbers entered"
 Examples:
-    user enters: 1, 2, hello, 2, world
+    # user enters: 1, 2, hello, 2, world
     >>> read_numbers(5)
     Avg: 1.67
     ------------
-    user enters: hello, world, foo, bar, baz
+    # user enters: hello, world, foo, bar, baz
     >>> read_numbers(5)
     No numbers entered
 
@@ -18,6 +18,22 @@ Examples:
 
 
 def read_numbers(n: int) -> str:
-    ...
+    numbers = []
+    for _ in range(n):
+        try:
+            num = int(input())
+        except ValueError:
+            pass
+        else:
+            numbers.append(num)
+
+    try:
+        print(f"Avg: {(sum(numbers) / len(numbers)):.2f}")
+    except ZeroDivisionError:
+        return 'No numbers entered'
+
+
+
+
 
 

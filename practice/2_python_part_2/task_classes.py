@@ -28,16 +28,39 @@ PEP8 comply strictly.
 import datetime
 
 
+class Homework:
+    def __init__(self, task_text: str, days_to_complete: int) -> None:
+        self.text = task_text
+        self.deadline = datetime.timedelta(days=days_to_complete)
+        self.created = datetime.datetime.now()
+
+    # Check task status.
+    def is_active(self) -> bool:
+        return self.created + self.deadline >= datetime.datetime.now()
+
+
 class Teacher:
-    ...
+    def __init__(self, first_name, last_name):
+        self.first_name = first_name
+        self.last_name = last_name
+
+    @staticmethod
+    def create_homework(task_text: str, days_to_complete: int) -> Homework:
+        return Homework(task_text, days_to_complete)
 
 
 class Student:
-    ...
+    def __init__(self, first_name, last_name):
+        self.first_name = first_name
+        self.last_name = last_name
 
-
-class Homework:
-    ...
+    @staticmethod
+    def do_homework(homework):
+        if homework.is_active():
+            return homework
+        else:
+            print('You are late')
+            return None
 
 
 if __name__ == '__main__':

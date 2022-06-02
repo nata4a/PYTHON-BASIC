@@ -17,5 +17,29 @@ In all cases it should print "Division finished"
 import typing
 
 
+class DivisionByOneException(Exception):
+    pass
+
+
 def division(x: int, y: int) -> typing.Union[None, int]:
-    ...
+
+    try:
+        if y == 1:
+            raise DivisionByOneException('Deletion on 1 get the same result')
+        result = x // y
+    except ZeroDivisionError:
+        print('Division by 0')
+        return None
+    except DivisionByOneException as error:
+        print(f'DivisionByOneException("{error}")')
+        return None
+    else:
+        print(result)
+        return
+    finally:
+        print('Division finished')
+
+
+division(1, 0)
+division(1, 1)
+division(2, 2)

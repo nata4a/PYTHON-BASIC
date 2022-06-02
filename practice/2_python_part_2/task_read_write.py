@@ -13,3 +13,19 @@ Example:
 
     result.txt(content: "23, 78, 3")
 """
+
+import os
+
+path = '/Users/niaiakovleva/projects/PYTHON-BASIC/practice/2_python_part_2/files'
+
+folder = sorted(os.listdir(path))
+all_el = []
+
+for file in folder:
+    curr_file = path + '/' + file
+    with open(curr_file, 'r') as rf:
+        value = rf.read()
+        all_el.append(value)
+
+with open('result.txt', 'w') as wf:
+    print(', '.join(all_el), file=wf)
