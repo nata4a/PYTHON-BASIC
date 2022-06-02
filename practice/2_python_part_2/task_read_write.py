@@ -16,7 +16,7 @@ Example:
 
 import os
 
-path = '/Users/niaiakovleva/projects/PYTHON-BASIC/practice/2_python_part_2/files'
+path = '/Users/nia/projects/PYTHON-BASIC/practice/2_python_part_2/files'
 
 folder = sorted(os.listdir(path))
 all_el = []
